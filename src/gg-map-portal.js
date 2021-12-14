@@ -392,6 +392,7 @@ class GGMapPortal extends HTMLElement {
 
     this.mapTitle = this.mapProperties.title ? this.mapProperties.title : "Map Portal";
     this.shadowRoot.getElementById('map-title').textContent = this.mapTitle;
+    document.title = this.mapTitle;
 
     if (!this.mapProperties.options) {
       console.warn('Warning: No map options given, please provide leaflet map options in the config file under mapProperties.options');

@@ -1,0 +1,254 @@
+mapProperties:
+  title: City of Garden Grove Data Portal
+  options:
+    center:
+      - 33.769
+      - -117.9955
+    zoom: 13
+    minZoom: 11
+    maxZoom: 20
+    preferCanvas: true
+  bounds:
+    - - 33.810159
+      - -118.054333
+    - - 33.727172
+      - -117.88496
+  attributionPrefix: City of Garden Grove
+
+downloadProperties:
+  source: '//ggcity.org/geoserver/gis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName='
+  options:
+    - type: GeoJSON
+      formatUrl: '&outputFormat=application/json'
+    - type: CSV
+      formatUrl: '&outputFormat=csv'
+    - type: KML
+      formatUrl: '&outputFormat=application/vnd.google-earth.kml+xml'
+    - type: Shapefile
+      formatUrl: '&outputFormat=SHAPE-ZIP'
+
+baseMaps:
+  - source: '//ggcity.org/tileserver/styles/standard-no-boundary/{z}/{x}/{y}.png'
+    format: XYZ
+    machineName: osm
+    name: OSM Standard
+    options:
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    default: true
+  - source: '//ggcity.org/geoserver/gwc/service/wms'
+    format: WMS
+    machineName: aerial
+    name: Aerial Imagery
+    options:
+      layers: 'gis:aerials-2020'
+      maxNativeZoom: 20
+
+wmsDefaultSource: https://ggcity.org/geoserver/gis/wms
+
+searchUrl: https://ggcity.org/maps/api/addresses/search
+
+overlayMaps:
+  - machineName: city
+    name: General City Layers
+    description: 'Atlas, City Council Districts, Benchmarks, etc'
+    initialCenter:
+      - 33.769
+      - -117.9955
+    initialZoom: 13
+    resetViewOnSelect: true
+    fitBounds: true
+    layers:
+      alwaysOn:
+        - machineName: 'gis:city.boundary'
+      exclusives:
+        - machineName: 'gis:city.parcel_atlas'
+          name: Atlas Sheets
+        - machineName: 'gis:city.benchmarks'
+          name: Benchmarks 
+        - machineName: 'gis:city.bicycle_corridors'
+          name: Bike Master Plan Corridors
+        - machineName: 'gis:city.boundary'
+          name: City Boundary 
+        - machineName: 'gis:city.council_districts'
+          name: City Council Districts
+          visible: true 
+        - machineName: 'gis:city.city_owned_parcels'
+          name: City-Owned Parcels
+        - machineName: 'gis:fire.stations'
+          name: Fire Stations
+        - machineName: 'gis:city.neighborhoods'
+          name: Neighborhoods & Business Districts
+        - machineName: 'gis:city.parks'
+          name: Parks
+        - machineName: 'gis:city.schools'
+          name: Schools
+        - machineName: 'gis:city.streets'
+          name: Street Centerlines
+
+  - machineName: building
+    name: Building Case Layers 
+    description: 'Violations, Open Permits, etc'
+    initialCenter:
+      - 33.769
+      - -117.9955
+    initialZoom: 13
+    resetViewOnSelect: true
+    fitBounds: true
+    layers:
+      alwaysOn:
+        - machineName: 'gis:city.boundary'
+      exclusives:
+        - machineName: 'gis:building.open_permits'
+          name: Open Permits
+          visible: true
+
+  - machineName: code_enforcement
+    name: Code Enforcement Layers 
+    description: 'Violations, Coverage, etc'
+    initialCenter:
+      - 33.769
+      - -117.9955
+    initialZoom: 13
+    resetViewOnSelect: true
+    fitBounds: true
+    layers:
+      alwaysOn:
+        - machineName: 'gis:city.boundary'
+      exclusives:
+        - machineName: 'gis:code.officer_coverage'
+          name: Coverage 
+          visible: true
+        - machineName: 'gis:code.violations'
+          name: Violations
+
+  - machineName: flood
+    name: Flood Layers 
+    description: 'FEMA LOMAs, FEMA SFHAs, Flood Prone Locations, etc'
+    initialCenter:
+      - 33.769
+      - -117.9955
+    initialZoom: 13
+    resetViewOnSelect: true
+    fitBounds: true
+    layers:
+      alwaysOn:
+        - machineName: 'gis:city.boundary'
+      exclusives:
+        - machineName: 'gis:city.fema_lomas'
+          name: FEMA LOMAs 
+          visible: true
+        - machineName: 'gis:county.fema_sfhas'
+          name: FEMA SFHAs
+
+  - machineName: county
+    name: Orange County Layers 
+    description: 'Boundaries, Parcels, etc'
+    initialCenter:
+      - 33.769
+      - -117.9955
+    initialZoom: 11
+    resetViewOnSelect: true
+    layers:
+      alwaysOn: 
+        - machineName: 'gis:city.address_labels' 
+      exclusives:
+        - machineName: 'gis:county.octa_bus_stops'
+          name: OCTA Bus Stops
+        - machineName: 'gis:county.city_boundaries'
+          name: City Boundaries 
+          visible: true
+        - machineName: 'gis:county.census_tracts'
+          name: Census Tracts
+        - machineName: 'gis:county.college_districts'
+          name: College Districts
+        - machineName: 'gis:county.elementary_school_districts'
+          name: Elementary School Districts
+        - machineName: 'gis:county.high_school_districts'
+          name: High School Districts
+        - machineName: 'gis:county.unified_school_districts'
+          name: Unified School Districts
+        - machineName: 'gis:county.parcels'
+          name: Parcels
+
+  - machineName: planning 
+    name: Planning Layers
+    description: 'Zoning, Land Use, Redevelopment, CDBG'
+    initialCenter:
+      - 33.769
+      - -117.9955
+    initialZoom: 13
+    resetViewOnSelect: true
+    fitBounds: true
+    layers:
+      alwaysOn:
+        - machineName: 'gis:city.boundary'
+      exclusives:
+        - machineName: 'gis:planning.land_use'
+          name: Land Use 
+        - machineName: 'gis:planning.open_cases'
+          name: Open Cases 
+        - machineName: 'gis:planning.zoning'
+          name: Zoning 
+          visible: true 
+
+  - machineName: property 
+    name: Property Layers
+    description: 'Addresses, Buildings, Parcels'
+    initialCenter:
+      - 33.775687
+      - -117.936863
+    initialZoom: 18
+    resetViewOnSelect: true
+    fitBounds: false
+    layers:
+      alwaysOn:
+        - machineName: 'gis:city.boundary'
+      optionals:
+        - machineName: 'gis:city.public_addresses'
+          name: Addresses
+          visible: true 
+        - machineName: 'gis:city.buildings'
+          name: Buildings
+          visible: true 
+        - machineName: 'gis:city.parcels'
+          name: Parcels
+          visible: true 
+
+  - machineName: pw
+    name: Public Works Layers
+    description: 'Trash, Street Sweeping, etc'
+    initialCenter:
+      - 33.769
+      - -117.9955
+    initialZoom: 13
+    resetViewOnSelect: true
+    fitBounds: true
+    layers:
+      alwaysOn:
+        - machineName: 'gis:city.boundary'
+      exclusives:
+        - machineName: 'gis:pw.street_sweeping'
+          name: Street Sweeping
+          visible: true
+        - machineName: 'gis:pw.trash_pickup'
+          name: Trash Pickup
+
+  - machineName: state
+    name: State Layers
+    description: 'Assembly Districts, Congressional Districts, Senate Districts'
+    initialCenter:
+      - 33.769
+      - -117.9955
+    initialZoom: 11
+    resetViewOnSelect: true
+    layers:
+      alwaysOn:
+        - machineName: 'gis:county.city_boundaries'
+      exclusives:
+        - machineName: 'gis:state.assembly_districts'
+          name: CA Assembly Districts
+          visible: true 
+        - machineName: 'gis:state.congress_districts'
+          name: CA Congressional Districts
+        - machineName: 'gis:state.senate_districts'
+          name: CA Senate Districts
