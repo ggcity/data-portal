@@ -1,0 +1,117 @@
+mapProperties:
+  title: City of Garden Grove Community Development
+  options:
+    center:
+      - 33.769
+      - -117.9955
+    zoom: 13
+    minZoom: 11
+    maxZoom: 20
+    preferCanvas: true
+  bounds:
+    - - 33.810159
+      - -118.054333
+    - - 33.727172
+      - -117.88496
+  attributionPrefix: City of Garden Grove
+
+downloadProperties:
+  source: '//ggcity.org/geoserver/gis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName='
+  options:
+    - type: GeoJSON
+      formatUrl: '&outputFormat=application/json'
+    - type: CSV
+      formatUrl: '&outputFormat=csv'
+    - type: KML
+      formatUrl: '&outputFormat=application/vnd.google-earth.kml+xml'
+    - type: Shapefile
+      formatUrl: '&outputFormat=SHAPE-ZIP'
+
+baseMaps:
+  - source: '//ggcity.org/tileserver/styles/standard/{z}/{x}/{y}.png'
+    format: XYZ
+    machineName: osm
+    name: OSM Standard
+    options:
+      attribution: '<a href="https://ggcity.org/maps" target="_blank">GGCity</a> |
+        &copy; <a href="http://openmaptiles.org/" target="_blank">OpenMapTiles</a> |
+        &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors |
+        &copy; <a href="https://github.com/microsoft/USBuildingFootprints/blob/master/LICENSE" target="_blank">Microsoft</a>'
+      edgeBufferTiles: 1
+      maxZoom: 20
+    default: true
+  - source: '//ggcity.org/geoserver/gwc/service/wms'
+    format: WMS
+    machineName: aerial
+    name: Aerial Imagery
+    options:
+      layers: 'gis:aerials-2020'
+      maxNativeZoom: 20
+
+wmsDefaultSource: https://ggcity.org/geoserver/gis/wms
+
+searchUrl: https://ggcity.org/maps/api/addresses/search
+
+overlayMaps:
+  - machineName: cases
+    name: CommDev Layers 
+    description: 'Building, Code Enforcement, Planning'
+    layers:
+      alwaysOn:
+        - machineName: 'gis:city.address_labels'
+      exclusives:
+        - machineName: 'gis:building.open_permits'
+          source: https://ggcity.org/geoserver/gis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=gis:building.open_permits&outputFormat=application%2Fjson&srsName=EPSG:4326
+          name: Open Building Permits
+          type: geojson
+          markerStyle:
+            radius: 10
+            weight: 0
+            fillColor: '#42d7f4'
+            fillOpacity: 0.8 
+          maxClusterRadius: 140 
+          identify: true
+          cluster: true
+          visible: true 
+        - machineName: 'gis:building.scheduled_inspections'
+          source: https://ggcity.org/geoserver/gis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=gis:building.scheduled_inspections&outputFormat=application%2Fjson&srsName=EPSG:4326
+          name: Scheduled Building Inspections
+          type: geojson
+          markerStyle:
+            radius: 10
+            weight: 0
+            fillColor: '#39b261'
+            fillOpacity: 0.8 
+          maxClusterRadius: 140 
+          identify: true
+          cluster: true
+        - machineName: 'gis:code.violations'
+          source: https://ggcity.org/geoserver/gis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=gis:code.violations&outputFormat=application%2Fjson&srsName=EPSG:4326
+          name: Code Enforcement Violations
+          type: geojson
+          markerStyle:
+            radius: 10 
+            weight: 0
+            fillColor: '#f46d41'
+            fillOpacity: 0.8 
+          maxClusterRadius: 140 
+          identify: true
+          cluster: true
+        - machineName: 'gis:planning.open_cases'
+          source: https://ggcity.org/geoserver/gis/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=gis:planning.open_cases&outputFormat=application%2Fjson&srsName=EPSG:4326
+          name: Open Planning Cases
+          type: geojson
+          markerStyle:
+            radius: 10 
+            weight: 0
+            fillColor: '#b241f4'
+            fillOpacity: 0.8 
+          maxClusterRadius: 140 
+          identify: true
+          cluster: true
+    initialCenter:
+      - 33.769
+      - -117.9955
+    initialZoom: 13
+    resetViewOnSelect: true
+    fitBounds: true

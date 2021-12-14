@@ -1,0 +1,9 @@
+.cache
+node_modules
+.yarn
+unused-code.js
+cypress
+.vscode
+db.json
+cypress.json
+package-lock.json
