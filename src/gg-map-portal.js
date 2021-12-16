@@ -6,6 +6,9 @@ import * as bootstrap from 'bootstrap';
 import { load } from 'js-yaml';
 import { wms as WMS } from './leaflet.wms.js';
 
+// const icon = new URL('leaflet/dist/images/marker-icon.png', import.meta.url);
+// const iconShadow = new URL('leaflet/dist/images/marker-shadow.png', import.meta.url);
+
 // Map Portal Template
 let mapTemplate = document.createElement('template');
 mapTemplate.innerHTML = /*html*/`

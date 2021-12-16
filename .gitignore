@@ -7,3 +7,5 @@ cypress
 db.json
 cypress.json
 package-lock.json
+.editorconfig
+.parcel-cache
