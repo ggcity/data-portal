@@ -1,13 +1,11 @@
 import 'leaflet';
 import 'leaflet.markercluster';
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 import * as bootstrap from 'bootstrap';
 import { load } from 'js-yaml';
 import { wms as WMS } from './leaflet.wms.js';
 
-// const icon = new URL('leaflet/dist/images/marker-icon.png', import.meta.url);
-// const iconShadow = new URL('leaflet/dist/images/marker-shadow.png', import.meta.url);
+const icon = new URL('https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png');
+const iconShadow = new URL('https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png');
 
 // Map Portal Template
 let mapTemplate = document.createElement('template');

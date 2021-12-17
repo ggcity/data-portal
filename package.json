@@ -1,8 +1,9 @@
 {
-  "name": "gg-map-portal",
+  "name": "@ggcity/gg-map-portal",
   "version": "1.0.0",
   "description": "Web component for making configurable maps with extensive overlays",
   "source": "./src/gg-map-portal.js",
+  "module": "./public/module.js",
   "author": "Ethan Rucker",
   "license": "GPL-3.0",
   "flat": true,
