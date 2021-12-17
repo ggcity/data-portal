@@ -8,7 +8,7 @@
   "license": "GPL-3.0",
   "flat": true,
   "scripts": {
-    "build": "parcel build --no-content-hash ./src/gg-map-portal.js --dist-dir test --public-url ./"
+    "build": "parcel build --no-content-hash ./src/gg-map-portal.js -d public --public-url ./"
   },
   "dependencies": {
     "@popperjs/core": "^2.10.2",

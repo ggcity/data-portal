@@ -10,9 +10,9 @@ mapProperties:
     preferCanvas: true
   bounds:
     - - 33.810159
-      - -118.054333
+      - -118.019772
     - - 33.727172
-      - -117.88496
+      - -117.920122
   attributionPrefix: City of Garden Grove
 
 downloadProperties:

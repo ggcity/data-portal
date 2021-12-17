@@ -24,9 +24,7 @@ mapTemplate.innerHTML = /*html*/`
   <style>
     #map {
       width: 100vw;
-        height: 100vh;
-        padding: 0;
-        margin: 0;
+      height: 100vh;
     }
 
     :host {
@@ -153,6 +151,13 @@ mapTemplate.innerHTML = /*html*/`
         width: 48px;
         height: 48px;
         border-radius: 5px;
+      }
+    }
+
+    @media (max-height: 700px) {
+      header#page-title h1 {
+        font-weight: 600;
+        font-size: 1.15rem;
       }
     }
 
