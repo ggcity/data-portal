@@ -24,7 +24,7 @@ mapTemplate.innerHTML = /*html*/`
   <style>
     #map {
       width: 100vw;
-      height: 100vh;
+      height: 100%;
     }
 
     :host {
