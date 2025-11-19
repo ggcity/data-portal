@@ -960,7 +960,8 @@ class GGMapPortal extends HTMLElement {
     let modal = new bootstrap.Modal(dom.getElementById('download-modal'));
     dom.getElementById('modal-close').onclick = () => modal.hide();
 
-    let downloadURL = this.downloadProperties.source + layer.machineName;
+    let source = (layer.source || this.wmsDefaultSource).replace(/\/wms$/, '/ows');
+    let downloadURL = source + '?service=WFS&version=1.0.0&request=GetFeature&typeName=' + layer.machineName;
 
     dom.getElementById('layer-name').textContent = layer.name;
     let downloadLinks = dom.querySelector('.modal-footer');
