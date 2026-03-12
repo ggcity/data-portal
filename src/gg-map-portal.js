@@ -674,7 +674,7 @@ class GGMapPortal extends HTMLElement {
     if (!location.hash) {
       this.overlayMaps[this.state.overlay].flattenedLayers.filter(l => l.visible && l.interaction !== 'alwaysOn')
         .forEach(l => {
-          this.state.layers.push(l.machineName.split('.')[1])
+          this.state.layers.push(l.machineName.split(':')[1])
         });
     }
 
@@ -698,7 +698,7 @@ class GGMapPortal extends HTMLElement {
         this.state.layers = [];
         this.overlayMaps[index].flattenedLayers.filter(l => l.visible && l.interaction !== 'alwaysOn')
           .forEach(l => {
-            this.state.layers.push(l.machineName.split('.')[1])
+            this.state.layers.push(l.machineName.split(':')[1])
           });
       }
       this.overlaySelect(this.state.overlay);
@@ -711,7 +711,7 @@ class GGMapPortal extends HTMLElement {
   _toggleLayer(layerName) {
     let layerIndex = this.selectedOverlay.flattenedLayers.findIndex(l => l.machineName === layerName && l.interaction !== 'alwaysOn');
     let layer = this.selectedOverlay.flattenedLayers[layerIndex];
-    let shortName = layerName.split('.')[1];
+    let shortName = layerName.split(':')[1];
 
     // First save the current state
     let currVisible = layer.visible;
@@ -852,7 +852,7 @@ class GGMapPortal extends HTMLElement {
     let visibleLayers = [];
     for (let i = 0; i < this.selectedOverlay.flattenedLayers.length; i++) {
       let layer = this.selectedOverlay.flattenedLayers[i];
-      let shortName = layer.machineName.split('.')[1];
+      let shortName = layer.machineName.split(':')[1];
       if (layer.interaction !== 'alwaysOn') {
         if (this.state.layers.includes(shortName)) {
           if (layer.interaction === 'exclusives' && this.state.layers.length > 1) {
